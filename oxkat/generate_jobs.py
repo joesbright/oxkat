@@ -496,7 +496,9 @@ def generate_syscall_wsclean(mslist,
                           useidg = cfg.WSC_USEIDG,
                           idgmode = cfg.WSC_IDGMODE,
                           paralleldeconvolution = cfg.WSC_PARALLELDECONVOLUTION,
-                          parallelreordering = cfg.WSC_PARALLELREORDERING):
+                          parallelreordering = cfg.WSC_PARALLELREORDERING,
+                          mfweighting = cfg.WSC_MFWEIGHTING,
+                          deconvolutionchannels = cfg.WSC_DECONVOLUTIONCHANNELS):
 
     # Generate system call to run wsclean
 
@@ -599,6 +601,9 @@ def generate_syscall_wsclean(mslist,
         syscall += '-stop-negative '
     if circularbeam:
         syscall += '-circular-beam '
+    if not mfweighting:
+        syscall += '-no-mf-weighting '
+        syscall += str(deconvolutionchannels)+' '
 
     # Masking
     if mask:
