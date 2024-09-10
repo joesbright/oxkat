@@ -603,7 +603,7 @@ def generate_syscall_wsclean(mslist,
         syscall += '-circular-beam '
     if not mfweighting:
         syscall += '-no-mf-weighting '
-        syscall += str(deconvolutionchannels)+' '
+        syscall += '-deconvolution-channels '+str(deconvolutionchannels)+' '
 
     # Masking
     if mask:
